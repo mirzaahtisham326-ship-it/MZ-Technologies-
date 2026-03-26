@@ -60,6 +60,39 @@ if (cForm) {
   });
 }
 
+// ── Newsletter Form (PHP Mailer) ──
+const nForm = document.getElementById('nlForm');
+if (nForm) {
+  nForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = nForm.querySelector('button');
+    const st  = document.getElementById('nlStatus');
+    const ogHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '...';
+    try {
+      const r = await fetch('newsletter.php', { method: 'POST', body: new FormData(nForm) });
+      const d = await r.json();
+      st.style.display = 'block';
+      if (d.status === 'success') {
+        st.style.color = '#10B981';
+        st.textContent = '✓ Subscribed successfully!';
+        nForm.reset();
+      } else {
+        st.style.color = '#EF4444';
+        st.textContent = '✗ ' + (d.message || 'Error subscribing.');
+      }
+    } catch {
+      st.style.display = 'block';
+      st.style.color = '#EF4444';
+      st.textContent = '✗ Connection error. Try again.';
+    }
+    btn.disabled = false;
+    btn.innerHTML = ogHtml;
+    setTimeout(() => { st.style.display = 'none'; }, 5000);
+  });
+}
+
 // ── Live Lead Injection ──
 const liveLeads = [
   { init:'AT', name:'Alex Thompson',  role:'CEO',           company:'GrowthLabs',  channel:'LinkedIn',  status:'booked',  label:'Booked'    },
@@ -76,10 +109,10 @@ function injectLead() {
   const l = liveLeads[leadIndex % liveLeads.length];
   leadIndex++;
   const existing = lr.querySelectorAll('.lead-row');
-  if (existing.length >= 5) {
+  // Immediately remove the oldest lead synchronously to maintain exact container height
+  if (existing.length >= 4) {
     const last = existing[existing.length - 1];
-    last.style.cssText = 'opacity:0;transform:translateX(10px);transition:all 0.4s ease';
-    setTimeout(() => { if (last.parentNode) last.remove(); }, 400);
+    if (last.parentNode) last.remove();
   }
   const sc = l.status === 'booked' ? 'status-booked' : l.status === 'contact' ? 'status-contact' : 'status-warm';
   const row = document.createElement('div');
