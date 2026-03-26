@@ -306,7 +306,8 @@ body::after{
 }
 .ticker-wrap::before{left:0;background:linear-gradient(to right,rgba(240,247,255,0.96),transparent)}
 .ticker-wrap::after{right:0;background:linear-gradient(to left,rgba(240,247,255,0.96),transparent)}
-.ticker-track{display:flex;width:max-content;animation:ticker 90s linear infinite}
+.ticker-track{display:flex;width:max-content;animation:ticker 45s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
 .ticker-slide{display:flex}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ticker-item{
@@ -350,11 +351,10 @@ body::after{
 
 
 .logos-track{
-
   display:flex;width:max-content;
-
-  animation:logosScroll 100s linear infinite;
+  animation:logosScroll 50s linear infinite;
 }
+.logos-track:hover{animation-play-state:paused}
 @keyframes logosScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .logos-slide{display:flex;align-items:center;gap:24px;padding-right:24px;}
 .partner-logo-item{
@@ -504,7 +504,8 @@ body::after{
 }
 .case-track-outer::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
 .case-track-outer::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
-.case-track{display:flex;width:max-content;gap:0;padding:10px 0;animation:caseScroll 140s linear infinite}
+.case-track{display:flex;width:max-content;gap:0;padding:10px 0;animation:caseScroll 70s linear infinite}
+.case-track:hover{animation-play-state:paused}
 .case-slide{display:flex;gap:18px;padding-right:18px}
 @keyframes caseScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .case-card{
@@ -554,8 +555,9 @@ body::after{
 .ss-carousel-container::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
 .ss-slide-wrapper{
   display:flex;width:max-content;
-  animation:ssScroll 120s linear infinite;
+  animation:ssScroll 60s linear infinite;
 }
+.ss-slide-wrapper:hover{animation-play-state:paused}
 @keyframes ssScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ss-slide{display:flex;gap:18px;padding:10px 0}
 .ss-img{
@@ -631,9 +633,10 @@ body::after{
 .reviews-row-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
 .reviews-row-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
 .reviews-row{display:flex;width:max-content;gap:0}
-.reviews-slide{display:flex;gap:13px;padding-right:13px}
-.reviews-row.left{animation:rvLeft 120s linear infinite}
-.reviews-row.right{animation:rvRight 140s linear infinite}
+.reviews-slide{display:flex;gap:20px;padding-right:20px}
+.reviews-row.left{animation:rvLeft 60s linear infinite}
+.reviews-row.right{animation:rvRight 70s linear infinite}
+.reviews-row.left:hover, .reviews-row.right:hover{animation-play-state:paused}
 @keyframes rvLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes rvRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 .rv-card{
@@ -799,6 +802,8 @@ body::after{
   .hero-ctas{flex-direction:column;align-items:center}
   .partner-logo-item{width:160px;height:70px;padding:10px 14px;border-radius:12px;}
   .logos-slide{gap:16px;padding-right:16px;}
+  .rv-card{width:300px;padding:20px;}
+  .reviews-slide{gap:16px;padding-right:16px;}
   .btn-primary,.btn-ghost{width:100%;max-width:280px;justify-content:center}
   .cta-card{padding:50px 24px}
   .footer-top{grid-template-columns:1fr;gap:30px}
@@ -814,6 +819,10 @@ body::after{
   .nav-cta{font-size:0.7rem;padding:7px 12px}
   .partner-logo-item{width:130px;height:60px;padding:8px 12px;border-radius:10px;}
   .logos-slide{gap:12px;padding-right:12px;}
+  .rv-card{width:260px;padding:16px;}
+  .rv-title{font-size:0.95rem;}
+  .rv-text{font-size:0.85rem;}
+  .reviews-slide{gap:12px;padding-right:12px;}
   .hero-title{font-size:clamp(2.4rem,11vw,3.4rem)}
   .widget-thead,.lead-row{grid-template-columns:2fr 1fr}
   .lead-row>*:nth-child(3),.lead-row>*:nth-child(4){display:none}
